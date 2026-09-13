@@ -1,0 +1,16 @@
+---
+import { getEntry } from 'astro:content';
+import { withBase } from '../lib/paths';
+interface Props { id: string; hero?: boolean; }
+const { id, hero = false } = Astro.props;
+const entry = await getEntry('media', id);
+if (!entry) throw new Error(`Missing media entry: ${id}`);
+const media = entry.data;
+---
+{media.status === 'approved' && media.src ? <figure class:list={['media', { 'media--hero': hero }]}>
+  <img src={withBase(media.src, import.meta.env.BASE_URL)} alt={media.alt} width={media.width} height={media.height} loading={hero ? 'eager' : 'lazy'} decoding="async" />
+</figure> : <div class:list={['media-placeholder', `media-placeholder--${id}`, { 'media--hero': hero }]}>
+  <span class="media-label">The Pack experience</span>
+  <p class="media-title">{media.title}<span aria-hidden="true">.</span></p>
+  <p class="media-note">Pack-approved activity photo coming soon</p>
+</div>}

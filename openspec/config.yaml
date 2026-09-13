@@ -1,0 +1,51 @@
+schema: spec-driven
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+# Add your tech stack, conventions, style guides, domain knowledge, etc.
+# Example:
+#   context: |
+#     Tech stack: TypeScript, React, Node.js
+#     We use conventional commits
+#     Domain: e-commerce platform
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
+
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+# Example:
+#   operations:
+#     apply:
+#       guidance:
+#         - Keep test summaries concise
+#     archive:
+#       guidance:
+#         - Summarize the archive outcome before finishing
+
+rules:
+  proposal:
+    - State the smallest meaningful user-facing or maintainer-facing change.
+    - Call out anything that departs from architecture.md.
+
+  specs:
+    - Write requirements as observable behavior.
+    - Do not invent requirements for pure docs/tooling/refactor changes.
+
+  design:
+    - Prefer Astro static generation, Markdown and Content Collections.
+    - Keep Pack-managed content out of presentation components.
+    - Document frontmatter schemas and migration impact.
+
+  tasks:
+    - Keep tasks small and verifiable.
+    - Separate content migration from Astro implementation.
+    - Avoid unrelated cleanup.

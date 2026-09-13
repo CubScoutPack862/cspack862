@@ -1,0 +1,31 @@
+---
+import '@fontsource/roboto-slab/latin-700.css';
+import '@fontsource/roboto-condensed/latin-400.css';
+import '@fontsource/roboto-condensed/latin-700.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { pack } from '../data/pack';
+import { published } from '../lib/content';
+import { withBase } from '../lib/paths';
+interface Props { title: string; description: string; canonicalPath?: string; }
+const { title, description, canonicalPath } = Astro.props;
+const origin = published(pack.origin);
+const canonical = origin ? new URL(canonicalPath ? withBase(canonicalPath, import.meta.env.BASE_URL) : Astro.url.pathname, origin).href : undefined;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#003f87" />
+    <link rel="icon" type="image/jpeg" href={withBase(pack.assets.logo.src, import.meta.env.BASE_URL)} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {canonical && <><link rel="canonical" href={canonical} /><meta property="og:url" content={canonical} /></>}
+  </head>
+  <body><a href="#main" class="skip-link">Skip to main content</a><Header /><main id="main" tabindex="-1"><slot /></main><Footer /></body>
+</html>

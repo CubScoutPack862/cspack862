@@ -1,0 +1,14 @@
+---
+import { getEntry, getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CalendarEmbed from '../components/CalendarEmbed.astro';
+import EventList from '../components/EventList.astro';
+import JoinCTA from '../components/JoinCTA.astro';
+import { sortEvents } from '../lib/content';
+import { pack } from '../data/pack';
+const page = (await getEntry('pages', 'calendar'))!;
+const { Content } = await render(page);
+const events = sortEvents(await getCollection('events'));
+---
+<BaseLayout title={page.data.title} description={page.data.description}><Hero page={page} /><section class="section"><div class="container calendar-layout"><div class="calendar-note prose"><Content /></div><CalendarEmbed /><h2 id="event-list">{pack.season} tentative events</h2><EventList events={events} /></div></section><JoinCTA /></BaseLayout>
