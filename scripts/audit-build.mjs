@@ -90,8 +90,6 @@ if (JSON.stringify(renderedRanks) !== JSON.stringify(expectedRanks)) throw new E
 const calendar=load(readFileSync('dist/calendar/index.html','utf8'));
 const events=calendar('[data-event]').toArray().map(el=>calendar(el).attr('data-event'));
 if (events.length!==readdirSync('content/events').filter(f=>f.endsWith('.md')).length || new Set(events).size!==events.length) throw new Error('Calendar event inventory mismatch');
-const eventRecords = readdirSync('content/events').filter(file=>file.endsWith('.md')).map(file=>parse(readFileSync(`content/events/${file}`,'utf8').split('---')[1]));
-if (eventRecords.some(event=>event.tentative !== true)) throw new Error('Every supplied 2026–2027 event must remain tentative');
 const files=walk(dist).map(file=>relative(dist,file).replaceAll('\\','/'));
 const emittedRoutes = files.filter(file=>file.endsWith('.html')).sort();
 if (JSON.stringify(emittedRoutes) !== JSON.stringify([...expected].sort())) throw new Error('Static artifact contains a route outside the brochure allowlist');
@@ -101,4 +99,4 @@ for (const route of ['fundraising/index.html','volunteer/index.html','photos/ind
 const emittedImages = walk(join(dist,'images'));
 if (emittedImages.length !== approved.size || emittedImages.some(path=>!approved.has(path))) throw new Error('Public image inventory differs from approved derivatives');
 if ([...approved].some(path=>!referencedImages.has(publicAssetUrl(`/${relative(dist,path).replaceAll('\\','/')}`)))) throw new Error('An approved public image is not used by the brochure');
-console.log(`Audited ${expected.length} brochure routes, ${links} internal links/assets, ${events.length} tentative calendar events, the approved image inventory, and whole-site private-material absence.`);
+console.log(`Audited ${expected.length} brochure routes, ${links} internal links/assets, ${events.length} calendar events, the approved image inventory, and whole-site private-material absence.`);

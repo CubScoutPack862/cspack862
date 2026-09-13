@@ -22,6 +22,17 @@ The approved production revision SHALL be published from the Pack-controlled pub
 - **WHEN** a proposed production revision fails content validation, tests, or the static build
 - **THEN** deployment is blocked and the previously successful public version remains available
 
+### Requirement: Isolated maintainer-operated staging
+The source repository SHALL provide a manually triggered GitHub Actions workflow that builds the Pack-controlled `develop` branch and deploys it only to the separate `CubScoutPack862/cspack862-staging` GitHub Pages site. The project SHALL document how a Pack maintainer creates, enables, publishes, reviews, and unpublishes that staging site; the implementation agent SHALL NOT perform those GitHub account actions.
+
+#### Scenario: Maintainer requests review of develop
+- **WHEN** an authorized maintainer manually dispatches the staging workflow after configuring the staging repository
+- **THEN** the current `develop` revision is validated and, if successful, becomes available only at the staging Pages URL under `/cspack862-staging/`
+
+#### Scenario: Staging review is incomplete
+- **WHEN** the staging workflow, review, or launch approval has not completed
+- **THEN** no Cloudflare DNS change, custom-domain configuration, or production launch is performed
+
 ### Requirement: Verified custom domain and HTTPS
 The public site SHALL use one Pack-owned canonical hostname, SHALL be served over valid HTTPS, SHALL redirect the corresponding apex or `www` alias to the canonical hostname, and SHALL prevent an unverified party from claiming the Pack's configured Pages domain.
 
@@ -36,6 +47,10 @@ The public site SHALL use one Pack-owned canonical hostname, SHALL be served ove
 #### Scenario: Domain ownership is configured
 - **WHEN** administrators connect the Pack domain to GitHub Pages
 - **THEN** the domain is verified for the Pack-controlled GitHub organization before DNS is considered launch-ready
+
+#### Scenario: Maintainer configures DNS after staging approval
+- **WHEN** the documented staging review is approved
+- **THEN** a Pack maintainer follows the guide to verify the domain in GitHub and configure Cloudflare GitHub Pages records in DNS-only mode before enabling HTTPS
 
 ### Requirement: Public-launch approval gate
 The site SHALL NOT be declared publicly launched until Pack leadership approves the production domain, public contact details, youth media, downloadable documents, calendar destinations, and all season-specific facts identified by the project's launch-confirmation register.
@@ -66,7 +81,7 @@ Maintainers SHALL have a documented, repeatable process to verify DNS, HTTPS, re
 ## MODIFIED Requirements
 
 ### Requirement: Delivery documentation and ownership
-The project SHALL document the supported runtime, local commands, build output, deployment flow, content review expectations, branch-based contribution model, production repository and branch, custom-domain configuration, DNS record purpose, launch verification, rollback process, monitoring and renewal responsibilities, and the Pack-controlled ownership and recovery model without storing account passwords, recovery codes, private consent records, or billing secrets in the public repository.
+The project SHALL document the supported runtime, local commands, build output, deployment flow, content review expectations, branch-based contribution model, production repository and branch, isolated staging workflow, maintainer-operated GitHub configuration, Cloudflare DNS-only configuration after staging approval, custom-domain configuration, DNS record purpose, launch verification, rollback process, monitoring and renewal responsibilities, and the Pack-controlled ownership and recovery model without storing account passwords, recovery codes, private consent records, or billing secrets in the public repository.
 
 #### Scenario: Site ownership transfers to another volunteer
 - **WHEN** a new technical maintainer reads the repository documentation and the Pack's private credential inventory

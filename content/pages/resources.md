@@ -60,6 +60,5 @@ The LA Scout Shop details below are provided as a planning reference. Confirm ho
 
 {{committeeSchedule}}
 
-{{denSchedule}}
 
 [View the meeting location and public contacts](/contact/).
