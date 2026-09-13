@@ -1,13 +1,13 @@
 ---
 import type { ManagedValue } from '../lib/content';
 import { published } from '../lib/content';
-interface Props { title?: string; value: ManagedValue<unknown>; }
-const { title, value } = Astro.props;
+interface Props { title?: string; value: ManagedValue<unknown>; showStatus?: boolean; }
+const { title, value, showStatus = true } = Astro.props;
 const labels = { tentative: 'Tentative', confirm: 'Awaiting confirmation', missing: 'Not yet available', verified: 'Confirmed', 'member-only': '', private: '' };
 const display = published(value);
 ---
 {value.status !== 'private' && value.status !== 'member-only' && <aside class="status-callout">
-  <strong>{title ?? labels[value.status]}</strong>
+  {showStatus && <strong>{title ?? labels[value.status]}</strong>}
   {title && value.status !== 'verified' && <span class="status-label">{labels[value.status]}</span>}
   {typeof display === 'string' && <p>{display}</p>}
   {value.publicNote && <p>{value.publicNote}</p>}

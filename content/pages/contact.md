@@ -3,7 +3,7 @@ title: Contact Us | Cub Scout Pack 862
 description: Email Pack 862’s Committee Chair or Cubmaster and find our approved Torrance meeting information.
 eyebrow: Get in touch
 heading: Let’s start with a hello.
-intro: Interested in joining or have a general question? Email our Committee Chair or Cubmaster and learn where the Pack gathers.
+intro: Interested in joining or have a general question? Email our Committee Chair or Cubmaster and learn more.
 ---
 ## Our meeting location
 
@@ -14,7 +14,7 @@ Faith United Methodist Church is Pack 862’s charter organization and primary m
 
 {{packSchedule}}
 
-The meeting address is not an office with published opening hours. Event-specific changes remain tentative until confirmed on the calendar.
+Event-specific changes remain tentative until confirmed on the calendar.
 
 ## Joining Pack 862
 
@@ -23,5 +23,3 @@ The [Scouting America youth application (external)](pack:youth) is available for
 ## Parent Committee
 
 {{committeeSchedule}}
-
-No private virtual-meeting link is published. {{denSchedule}}

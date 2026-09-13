@@ -1,6 +1,6 @@
 ---
 title: Cub Scout Pack 862 | Torrance, California
-description: A family Cub Scout Pack in Torrance for boys and girls in grades K–5. Explore Pack activities, tentative events, and how to join.
+description: A family Cub Scout Pack in Torrance for boys and girls in grades K–5. Explore Pack activities, events, and how to join.
 eyebrow: Cub Scout Pack 862 · Torrance, California
 heading: Small adventures. Lifelong discoveries.
 intro: Camping weekends, handmade race cars, and a whole Pack to cheer you on. A family Cub Scout program for boys and girls in Kindergarten through 5th grade.

@@ -41,6 +41,8 @@ The site SHALL make verified grades served, Pack identity, meeting location, Pac
 - **WHEN** a visitor opens the Contact page or a global contact surface
 - **THEN** the site offers email links for Committee Chair Karen Garcia at `cubscoutpack862@gmail.com` and Cubmaster Michael Huffman at `activitiescubscoutpack862@gmail.com`, publishes no leader phone numbers or biographies, and does not present a server-submitted contact form
 
+## ADDED Requirements
+
 ### Requirement: Join page offers an approved registered-volunteer pathway
 The Join page SHALL explain that families may participate as registered volunteers, identify general Pack and event support as examples, and provide the official adult application, safeguarding, California / GLAAC compliance, and My.Scouting training links. It SHALL publish the applicable adult registration fee and active-role registration and LiveScan reimbursement policy. It MUST NOT create a dedicated Volunteer destination or publish volunteer vacancies, rosters, private coordination details, payment instructions, donation routes, or fundraising campaign details.
 
@@ -51,6 +53,8 @@ The Join page SHALL explain that families may participate as registered voluntee
 #### Scenario: Visitor seeks a specific volunteer role
 - **WHEN** a visitor looks for a current opening or operational assignment
 - **THEN** the site does not expose a roster, vacancy, private schedule, or other member-only coordination detail
+
+## MODIFIED Requirements
 
 ### Requirement: Brand, youth privacy, and factual guardrails
 The site MUST use visually faithful web derivatives of the approved Pack 862 logo in the header, footer, homepage, and favicon; MUST NOT display a standalone official Cub Scouts program logo; and SHALL use only visually faithful web derivatives of the supplied official rank insignia for Lion, Tiger, Wolf, Bear, Webelos, and Arrow of Light den cards. Resizing, compression, and format conversion SHALL preserve aspect ratio and recognizable artwork without recoloring, distortion, or redesign. The site SHALL link to Scouting America and display the Pack affiliation and trademark disclaimer. It MUST NOT publish youth personal information, Pack/family photographs, or missing or conflicting source material as confirmed fact.

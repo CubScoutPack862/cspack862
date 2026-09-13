@@ -7,15 +7,19 @@ Consolidate the forms, onboarding guidance, safety information, uniform help, FA
 ## Requirements
 
 ### Requirement: Comprehensive resource hub
-The Resources page SHALL group verified resources into clear sections for getting started, registration and financial assistance, health and medical forms, uniforms, safety and adult requirements, communication tools, downloadable Pack documents, volunteering, and frequently asked questions.
+The Resources page SHALL act as a public brochure hub for verified joining, season fees, financial assistance, uniforms, Scout Shop information, public safety guidance, official safeguarding and medical-form resources, and frequently asked questions. It MUST NOT publish or solicit member-only communication links, Pack-specific forms, camping files, payment instructions, fundraising campaign details, donation routes, volunteer vacancies or rosters, or the private New Family Orientation Guide.
 
 #### Scenario: New family opens Resources
-- **WHEN** a parent or guardian visits the Resources page
-- **THEN** they can scan category headings and reach the youth application, financial assistance, medical form, youth-protection training, California compliance, official uniform guide, and new-family orientation guide
+- **WHEN** a visitor opens the Resources page
+- **THEN** they can scan approved public sections and reach youth registration, financial assistance, official uniform guidance, official safeguarding and medical-form information, Scout Shop details, and the Pack contact path
 
 #### Scenario: Resource is not available
-- **WHEN** a requested Pack resource such as the Band invite, Scoutbook instructions, or camping packing list has not been supplied
-- **THEN** the page presents a concise labeled placeholder or omits the inactive control and provides the shared Pack contact path instead of fabricating a link
+- **WHEN** a Pack resource is classified private, member-only, missing, or not approved for public use
+- **THEN** the page omits the resource and does not display its value, a dead link, or a prompt to request the private value
+
+#### Scenario: Visitor looks for the orientation guide
+- **WHEN** a visitor reviews public downloads or requests the former guide URL
+- **THEN** the private guide is not offered as a download and its former public file is absent from the site artifact
 
 ### Requirement: Safe and descriptive resource links
 External and downloadable links SHALL use descriptive names, visibly identify external destinations or document formats where useful, and avoid collecting sensitive youth information.
@@ -29,11 +33,15 @@ External and downloadable links SHALL use descriptive names, visibly identify ex
 - **THEN** the page provides the shared Pack email as the assistance path without requesting unnecessary child details
 
 ### Requirement: New-family onboarding checklist
-The site SHALL present the source-supported onboarding steps in a clear sequence and distinguish annual, one-time, optional, and currently unconfirmed actions.
+The site SHALL present only publicly approved onboarding steps suitable for prospective families, including youth registration, season fees, available financial assistance, general uniform preparation, official safeguarding and medical-form guidance, the approved shared-email route for submitting safeguarding certificates, and the public Pack contact route. It MUST NOT present member-only app invitations, Pack-specific forms, payment instructions, or private documents as public onboarding steps.
 
 #### Scenario: Family reviews onboarding
-- **WHEN** a newly registered family opens the onboarding section
-- **THEN** the steps for registration, annual safeguarding training, Trail's End, medical records, uniforms, handbook, Band, and parent meetings are shown with unavailable links flagged for confirmation
+- **WHEN** a visitor opens public joining or resource guidance
+- **THEN** the visitor can understand who may join, how to register, the approved 2026-2027 fees and due date, where to review financial assistance, uniforms, safeguarding, and medical-form information, where to email a safeguarding certificate, and how to contact the Pack
+
+#### Scenario: Registered family needs internal onboarding
+- **WHEN** the public brochure refers to details supplied after registration
+- **THEN** it does not disclose or enumerate private systems, invitation links, files, or payment channels
 
 ### Requirement: Uniform guidance avoids unsupported claims
 Uniform content SHALL reflect the rank-specific source guidance, link to the official Cub Scout uniform resource, label year-sensitive Scout Shop information for confirmation, and MUST NOT apply Tiger-specific neckerchief or slide details to other ranks.
@@ -60,14 +68,13 @@ The site SHALL answer verified common questions about who can join, grades and d
 - **WHEN** a keyboard user navigates the FAQ controls
 - **THEN** each question can be focused, expanded, and collapsed without a pointer device
 
-### Requirement: Volunteer and fundraising information remains factual
-The Volunteer and Fundraising experiences SHALL explain verified participation expectations, registration and training requirements, reimbursements, dues, popcorn fundraising, and direct-donation treatment, while withholding unsupported openings, goals, schedules, sponsorship packages, or donation links.
+### Requirement: Registered-volunteer guidance is available from Join
+The public Join experience SHALL provide a narrowly scoped registered-volunteer section covering general participation, the official adult application, safeguarding, California / GLAAC compliance, My.Scouting position-specific training, adult leader uniform direction, the annual adult registration fee, and the active-role registration and LiveScan reimbursement policy. It MUST NOT offer a dedicated Volunteer page or disclose roles, vacancies, rosters, private coordination, donation routes, payment instructions, or fundraising campaign details.
 
-#### Scenario: No current volunteer openings are configured
-- **WHEN** the Volunteer page has no approved vacancy data
-- **THEN** it invites families to contact the Pack about helping without listing invented roles
+#### Scenario: Parent considers becoming a registered volunteer
+- **WHEN** a prospective family reviews the Join page
+- **THEN** it can follow the official adult application and training links and understand the public fee and reimbursement policy without needing a private Pack document
 
-#### Scenario: No public donation route is configured
-- **WHEN** the Fundraising page has no approved public donation URL
-- **THEN** it explains the verified fundraising model and directs questions to the shared Pack contact without presenting a payment button
-
+#### Scenario: Volunteer operational information is unavailable publicly
+- **WHEN** a visitor seeks a current role, assignment, fundraising campaign, or internal coordination detail
+- **THEN** the public brochure omits it rather than displaying a placeholder or a prompt for a private link

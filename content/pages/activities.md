@@ -17,7 +17,7 @@ cards:
 ---
 ## Camping and outdoor outings
 
-Camping is a Pack tradition. This season’s tentative plan includes Boo Fest Camping and Rocket Academy Camping. Find the dates on our [Pack calendar](/calendar/). Times, locations, and outing details are published only after they are confirmed.
+Camping is a Pack tradition. This season’s tentative plan includes Boo Fest Camping and Rocket Academy Camping. Find the dates on our [Pack calendar](/calendar/). 
 
 ## Pinewood Derby & Raingutter Regatta
 
@@ -29,6 +29,6 @@ The Holiday Party, Blue & Gold Party, Game Night, and End of Year Picnic bring f
 
 ## Service and citizenship
 
-The tentative calendar includes Flags on Graves at Roosevelt Memorial Park. Service and conservation also feature in rank adventures. Further service-project details will come from Pack leadership.
+ The Pack participates in the annual Flag-raising Ceremony at Roosevelt Memorial Park. Service and conservation also feature in rank adventures.
 
-[See the full tentative activity plan →](/calendar/)
+[See the full activity plan →](/calendar/)

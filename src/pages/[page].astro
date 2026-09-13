@@ -36,7 +36,7 @@ const extras = id === 'resources' ? [{ slug: 'scout-shop', text: 'Scout Shop' },
           <ResourceGroup id="scout-shop" title="LA Scout Shop"><p><strong>{pack.shop.name}</strong><br />{pack.shop.address}</p><StatusCallout value={pack.shop.hours} /></ResourceGroup>
           <ResourceGroup id="faq" title="Frequently asked questions"><FAQList /></ResourceGroup>
         </>}
-        {id === 'contact' && <>{pack.leaders.filter(leader => published(leader.name)).map(leader => <ResourceGroup id={leader.role.toLowerCase().replaceAll(' ', '-')} title={leader.role}><StatusCallout value={leader.name} />{emailHref(leader.email) && <a class="text-link" href={emailHref(leader.email)}>{published(leader.email)}</a>}</ResourceGroup>)}</>}
+        {id === 'contact' && <>{pack.leaders.filter(leader => published(leader.name)).map(leader => <ResourceGroup id={leader.role.toLowerCase().replaceAll(' ', '-')} title={leader.role}><StatusCallout value={leader.name} showStatus={false} />{emailHref(leader.email) && <a class="text-link" href={emailHref(leader.email)}>{published(leader.email)}</a>}</ResourceGroup>)}</>}
       </div>
     </div>
   </div></section>

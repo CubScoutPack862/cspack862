@@ -38,3 +38,10 @@ The public Join experience SHALL provide a narrowly scoped registered-volunteer 
 #### Scenario: Volunteer operational information is unavailable publicly
 - **WHEN** a visitor seeks a current role, assignment, fundraising campaign, or internal coordination detail
 - **THEN** the public brochure omits it rather than displaying a placeholder or a prompt for a private link
+
+## REMOVED Requirements
+
+### Requirement: Volunteer and fundraising information remains factual
+**Reason**: The public Volunteer and Fundraising destinations are removed. Only the narrowly scoped registered-volunteer guidance on Join remains public.
+
+**Migration**: Remove the dedicated Volunteer and Fundraising pages and their navigation links. Keep role-specific operations, fundraising campaigns, donation routes, and internal coordination in Pack-controlled member communications.
