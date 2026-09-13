@@ -1,0 +1,10 @@
+---
+import { getEntry } from 'astro:content';
+import { pack } from '../data/pack';
+import { withBase } from '../lib/paths';
+const about = await getEntry('pages', 'about');
+---
+<div class="rank-grid">{about?.data.ranks?.map((rank, index) => {
+  const asset = pack.assets.ranks[rank.name as keyof typeof pack.assets.ranks];
+  return <article class="rank-card"><span class="rank-number" aria-hidden="true">0{index + 1}</span><img class="rank-insignia" src={withBase(asset.src, import.meta.env.BASE_URL)} width={asset.width} height={asset.height} alt={asset.alt} loading="lazy" decoding="async" /><p>{rank.grade} · {rank.den}</p><h3>{rank.name}</h3><p>{rank.description}</p></article>;
+})}</div>
