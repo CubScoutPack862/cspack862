@@ -1,0 +1,11 @@
+---
+import { pack } from '../data/pack';
+import { withBase } from '../lib/paths';
+import { statusText } from '../lib/content';
+---
+<section class="quick-facts" aria-label="Pack quick facts"><dl class="container facts-grid">
+  <div><dt>Who can join</dt><dd>Grades K–5 · Boys & girls</dd></div>
+  <div><dt>Our community</dt><dd>Torrance, California</dd></div>
+  <div><dt>Our meeting place</dt><dd>{pack.location.name}</dd></div>
+  <div><dt>Meetings</dt><dd><a href={withBase('/contact/', import.meta.env.BASE_URL)}>{pack.schedules.pack.status === 'verified' ? statusText(pack.schedules.pack) : 'Check meeting details →'}</a><span class="fact-note">{pack.schedules.pack.status === 'confirm' ? 'Awaiting confirmation' : pack.schedules.pack.status === 'tentative' ? 'Tentative schedule' : ''}</span></dd></div>
+</dl></section>

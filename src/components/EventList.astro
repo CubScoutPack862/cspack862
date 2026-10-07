@@ -1,0 +1,8 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import EventCard from './EventCard.astro';
+import ButtonLink from './ButtonLink.astro';
+interface Props { events: CollectionEntry<'events'>[]; preview?: boolean; }
+const { events, preview = false } = Astro.props;
+---
+{events.length ? <div class="event-list">{events.map(event => <EventCard event={event} preview={preview} />)}</div> : <div class="empty-state"><h3>More adventures are on the way.</h3><p>New dates are being prepared. Check the full calendar or contact the Pack for the next plan.</p><div class="actions"><ButtonLink href="/calendar/">Full calendar</ButtonLink><ButtonLink href="/contact/" variant="outline">Pack contact details</ButtonLink></div></div>}

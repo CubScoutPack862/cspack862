@@ -1,0 +1,23 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/content';
+import { withBase } from '../lib/paths';
+interface Props { event: CollectionEntry<'events'>; preview?: boolean; }
+const { event, preview = false } = Astro.props;
+const { data } = event;
+const { Content } = await render(event);
+const date = new Date(`${data.startDate}T12:00:00Z`);
+const month = date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
+---
+<article class="event-card" id={preview ? undefined : event.id} data-event={event.id}>
+  <div class="event-date" aria-hidden="true"><span>{month}</span><strong>{data.startDate.slice(-2).replace(/^0/, '')}</strong></div>
+  <div class="event-body"><p class="event-meta"><time datetime={data.startDate}>{formatDate(data.startDate, data.endDate)}</time>{data.tentative && <span class="badge">Tentative</span>}</p><h3>{data.title}</h3>
+    {data.summary !== data.title && <p>{data.summary}</p>}
+    {data.notes && <p>{data.notes}</p>}
+    {data.time && <p>{data.time}</p>}{data.location && <p>{data.location}</p>}
+    {(!data.time || !data.location) && <p class="muted">{!data.time && !data.location ? 'Time and location to be confirmed.' : !data.time ? 'Time to be confirmed.' : 'Location to be confirmed.'}</p>}
+    {!preview && <div class="event-description"><Content /></div>}
+    {preview && <a class="text-link" href={withBase(`/calendar/#${event.id}`, import.meta.env.BASE_URL)}>Event details →</a>}
+    {data.detailsUrl && <a class="text-link" href={data.detailsUrl}>More about {data.title} (external) ↗</a>}
+  </div>
+</article>

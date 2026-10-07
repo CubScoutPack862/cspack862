@@ -1,0 +1,29 @@
+---
+import { getEntry, getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import QuickFacts from '../components/QuickFacts.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ActivityCard from '../components/ActivityCard.astro';
+import EventList from '../components/EventList.astro';
+import RankGrid from '../components/RankGrid.astro';
+import FAQList from '../components/FAQList.astro';
+import JoinCTA from '../components/JoinCTA.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+import { upcomingEvents } from '../lib/content';
+import { pack } from '../data/pack';
+const page = (await getEntry('pages', 'home'))!;
+const activities = (await getEntry('pages', 'activities'))!;
+const { Content } = await render(page);
+const events = upcomingEvents(await getCollection('events'));
+---
+<BaseLayout title={page.data.title} description={page.data.description}>
+  <Hero page={page} home /><QuickFacts />
+  <section class="section"><div class="container welcome-grid"><div class="prose"><p class="eyebrow">Welcome to Pack 862</p><Content /></div><aside class="welcome-aside"><strong>Do Your Best.</strong><p>Our Cub Scout motto.<br />A little encouragement for every new adventure.</p><ButtonLink href="/about/" variant="outline">Meet our Pack →</ButtonLink></aside></div></section>
+  <section class="section section--alt" id="activities"><div class="container"><SectionHeading eyebrow="Good times. New skills." title="This is what growing up can look like." /><div class="card-grid">{activities.data.cards?.map(card => <ActivityCard {...card} />)}</div></div></section>
+  <section class="section" id="upcoming"><div class="container split-section"><div><SectionHeading eyebrow={`${pack.season} · Tentative plan`} title="Something to look forward to."><p>Our next Pack adventures. Please confirm times and locations before attending.</p></SectionHeading><ButtonLink href="/calendar/" variant="outline">View the full calendar →</ButtonLink></div><EventList events={events} preview /></div></section>
+  <section class="section section--alt" id="dens"><div class="container"><SectionHeading eyebrow="One step at a time" title="An adventure for every grade."><p>Scouts explore with their grade-based Den, then come together as one Pack.</p></SectionHeading><RankGrid /></div></section>
+  <section class="section"><div class="container split-section"><div><SectionHeading eyebrow="New to Cub Scouting?" title="We’ll help you find your feet."><p>From registration to the first uniform, our family resources bring the practical details together.</p></SectionHeading><ButtonLink href="/resources/">Explore parent resources →</ButtonLink></div><div class="resources-panel"><h3>Your first steps</h3><ol><li>Get to know the Pack and your Scout’s Den.</li><li>Register and complete the family checklist.</li><li>Confirm the next meeting and join the adventure.</li></ol><ButtonLink href="/join/" variant="outline">How to join Pack 862 →</ButtonLink></div></div></section>
+  <section class="section section--alt"><div class="container split-section"><SectionHeading eyebrow="A few helpful answers" title="Big questions? Start here." /><FAQList compact /></div></section>
+  <JoinCTA />
+</BaseLayout>

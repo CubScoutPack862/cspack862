@@ -1,0 +1,37 @@
+---
+import { withBase } from '../lib/paths';
+import { pack } from '../data/pack';
+const url = (path: string) => withBase(path, import.meta.env.BASE_URL);
+const navigation = [['/', 'Home'], ['/about/', 'About'], ['/calendar/', 'Calendar'], ['/join/', 'Join'], ['/activities/', 'Activities'], ['/resources/', 'Resources'], ['/contact/', 'Contact']];
+---
+<header class="site-header">
+  <div class="utility-bar"><div class="container utility-inner"><span>{pack.identity.city} · Family Cub Scouting</span><span class="utility-season">{pack.season}</span></div></div>
+  <div class="container header-inner">
+    <a class="brand" href={url('/')} aria-label="Cub Scout Pack 862 home"><img src={url(pack.assets.logo.src)} width={pack.assets.logo.width} height={pack.assets.logo.height} alt="" /></a>
+    <button class="menu-toggle" hidden aria-expanded="false" aria-controls="primary-nav">Menu <span aria-hidden="true">☰</span></button>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+      {navigation.map(([path, label]) => <a href={url(path)} aria-current={Astro.url.pathname === url(path) ? 'page' : undefined}>{label}</a>)}
+    </nav>
+    <a class="button button--gold header-join" href={url('/join/')}>Join Pack 862 <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#primary-nav');
+  if (toggle && nav) {
+    toggle.hidden = false;
+    nav.classList.add('enhanced');
+    const setOpen = (open: boolean) => { toggle.setAttribute('aria-expanded', String(open)); nav.classList.toggle('is-open', open); };
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setOpen(false); toggle.focus(); }
+    });
+    nav.addEventListener('click', event => { if ((event.target as HTMLElement).closest('a')) setOpen(false); });
+    document.addEventListener('click', event => { if (!nav.contains(event.target as Node) && !toggle.contains(event.target as Node)) setOpen(false); });
+    const desktop = matchMedia('(min-width: 1024px)');
+    desktop.addEventListener('change', () => {
+      if (!desktop.matches && nav.contains(document.activeElement)) toggle.focus();
+      setOpen(false);
+    });
+  }
+</script>

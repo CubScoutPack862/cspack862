@@ -1,0 +1,6 @@
+---
+import { withBase } from '../lib/paths';
+interface Props { href: string; variant?: 'primary' | 'gold' | 'outline'; }
+const { href, variant = 'primary' } = Astro.props;
+---
+<a class:list={['button', `button--${variant}`]} href={withBase(href, import.meta.env.BASE_URL)}><slot /></a>

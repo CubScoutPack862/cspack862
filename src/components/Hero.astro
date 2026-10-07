@@ -1,0 +1,15 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ButtonLink from './ButtonLink.astro';
+import MediaPlaceholder from './MediaPlaceholder.astro';
+interface Props { page: CollectionEntry<'pages'>; home?: boolean; }
+const { page, home = false } = Astro.props;
+---
+<section class:list={['hero', { 'hero--home': home }]}>
+  <div class:list={['container', home ? 'hero-grid' : 'page-hero']}>
+    <div class="hero-copy"><p class="eyebrow">{page.data.eyebrow}</p><h1>{page.data.heading}</h1><p class="hero-intro">{page.data.intro}</p>
+      {home && <div class="actions"><ButtonLink href="/join/" variant="gold">Join Pack 862 <span aria-hidden="true">↗</span></ButtonLink><ButtonLink href="/calendar/" variant="outline">See upcoming events</ButtonLink></div>}
+    </div>
+    {home && <MediaPlaceholder id="hero" hero />}
+  </div>
+</section>

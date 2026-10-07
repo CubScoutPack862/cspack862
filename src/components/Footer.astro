@@ -1,0 +1,15 @@
+---
+import { pack } from '../data/pack';
+import { withBase } from '../lib/paths';
+import PackContact from './PackContact.astro';
+import { statusText } from '../lib/content';
+const paths = [['/about/', 'About our Pack'], ['/calendar/', 'Calendar'], ['/join/', 'Join Pack 862'], ['/activities/', 'Activities & Adventures'], ['/resources/', 'Parent Resources'], ['/contact/', 'Contact']];
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div><img class="footer-logo" src={withBase(pack.assets.logo.src, import.meta.env.BASE_URL)} width={pack.assets.logo.width} height={pack.assets.logo.height} alt={pack.assets.logo.alt} /><p class="eyebrow">Do Your Best</p><h2>{pack.identity.name}</h2><p>{pack.identity.city}<br />{pack.identity.district}<br />{pack.identity.council}</p><PackContact /></div>
+    <nav aria-label="All Pack pages"><strong>Explore the Pack</strong><div class="footer-links">{paths.map(([path, title]) => <a href={withBase(path, import.meta.env.BASE_URL)}>{title}</a>)}</div></nav>
+    <div><strong>Our meeting place</strong><p>{pack.location.name}<br /><a href={pack.links.maps}>{pack.location.address} <span aria-hidden="true">↗</span></a></p><p>{statusText(pack.schedules.pack)}</p><a class="text-link" href={pack.links.scouting}>Scouting America <span aria-hidden="true">↗</span></a></div>
+  </div>
+  <div class="container footer-legal"><p>© {new Date().getFullYear()} {pack.identity.name}</p><p>Cub Scout Pack 862 is a local unit participating in the Scouting America program. Scouting America, Cub Scouts, associated marks, and program logos are trademarks of Scouting America and are used according to applicable brand guidelines.</p></div>
+</footer>

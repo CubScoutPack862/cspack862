@@ -1,0 +1,10 @@
+---
+import { getEntry } from 'astro:content';
+import { tokens } from '../lib/remark-pack';
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+const resources = await getEntry('pages', 'resources');
+const questions = compact ? resources?.data.faqs?.slice(0, 4) : resources?.data.faqs;
+const expand = (value: string) => value.replace(/\{\{(\w+)\}\}/g, (_, key: string) => tokens[key] ?? key);
+---
+<div class="faq-list">{questions?.map(item => <details><summary>{item.question}</summary><p>{expand(item.answer)}</p></details>)}</div>

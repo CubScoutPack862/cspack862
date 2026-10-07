@@ -1,0 +1,31 @@
+{
+  "name": "pack-862-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=9.6.5"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "check": "astro sync && astro check && node --experimental-strip-types scripts/validate-content.ts && node --experimental-strip-types --test tests/*.test.ts",
+    "build": "node --experimental-strip-types scripts/validate-content.ts && astro build && node --experimental-strip-types scripts/audit-build.mjs",
+    "preview": "astro preview --host 127.0.0.1",
+    "verify:modes": "node scripts/verify-modes.mjs"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.0",
+    "@fontsource/roboto-condensed": "^5.2.0",
+    "@fontsource/roboto-slab": "^5.2.0",
+    "astro": "^7.3.1",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/node": "^24.0.0",
+    "cheerio": "^1.1.0",
+    "typescript": "^5.9.0",
+    "yaml": "^2.8.0"
+  }
+}

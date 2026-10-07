@@ -1,0 +1,10 @@
+---
+import { pack } from '../data/pack';
+import { published } from '../lib/content';
+import StatusCallout from './StatusCallout.astro';
+const calendar = published(pack.calendar);
+---
+<section class="live-calendar" aria-labelledby="live-calendar-title"><h2 id="live-calendar-title">Live Pack calendar</h2>
+{pack.calendar.status === 'tentative' && <StatusCallout value={pack.calendar} />}
+{calendar ? <><p><a class="text-link" href={calendar.directUrl}>Open the Pack Google Calendar (external) ↗</a></p><iframe src={calendar.embedUrl} title="Pack 862 live Google Calendar" loading="lazy" referrerpolicy="no-referrer" height="600"></iframe></> : <StatusCallout value={pack.calendar} />}
+</section>
