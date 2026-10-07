@@ -47,4 +47,8 @@ Dens bring Scouts of the same rank or grade together for age-appropriate adventu
 
 That simple motto guides our adventures. The program helps Scouts develop character, leadership, good citizenship, and personal fitness. Outdoors, personal safety awareness, family, and reverence are part of the experience.
 
+Each Cub Scout rank has its own required and elective Adventures, with activities that grow as Scouts move from Kindergarten through 5th grade. Choose your Scout's rank to explore the Adventures they can complete.
+
+[Explore Adventures for your Scout’s rank →](https://www.scouting.org/programs/cub-scouts/adventures/)
+
 [Explore our activities →](/activities/)
